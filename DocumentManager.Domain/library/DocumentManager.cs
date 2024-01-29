@@ -19,6 +19,8 @@ namespace DocumentManager.Domain
         {
             DocumentItem doc = null;
 
+            doc = documentQueue.Peek();
+
             return doc;
         }
 
@@ -26,13 +28,15 @@ namespace DocumentManager.Domain
         {
             DocumentItem doc = null;
 
+            doc = documentQueue.Dequeue();
+
             return doc;
         }
 
 
         public bool IsDocumentAvailable()
         {
-            return false;
+            return documentQueue.Count() > 0;
         }
 
         public int CountItemsInQueue()

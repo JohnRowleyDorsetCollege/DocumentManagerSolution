@@ -41,7 +41,16 @@ namespace DocumentManager.Tests
         [Test]
         public void DocumentManagerShouldAddItemToQueue()
         {
-            Assert.Fail();
+            Document_Manager dm = new();
+
+            string titleToTest = "Demo Title";
+            string contentToTest = "Demo Content";
+            var documentItem = new DocumentItem(titleToTest, contentToTest);
+
+            dm.AddDocument(documentItem);
+
+
+            Assert.True(dm.IsDocumentAvailable());
         }
 
         [Test]
@@ -53,7 +62,26 @@ namespace DocumentManager.Tests
         [Test]
         public void DocumentManager_IsDocumentAvailable_ShouldReturnFalseWhenQueueIsEmpty()
         {
-            Assert.Fail();
+            Document_Manager dm = new();
+
+            Assert.False(dm.IsDocumentAvailable());
+           
+        }
+
+        [Test]
+        public void DocumentManager_IsDocumentAvailable_ShouldReturnTrueWhenQueueIsNotEmpty()
+        {
+            Document_Manager dm = new();
+
+            string titleToTest = "Demo Title";
+            string contentToTest = "Demo Content";
+            var documentItem = new DocumentItem(titleToTest, contentToTest);
+
+            dm.AddDocument(documentItem);
+
+
+            Assert.True(dm.IsDocumentAvailable());
+
         }
 
         [Test]
